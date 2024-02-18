@@ -1,0 +1,31 @@
+name: 'Test demo scripts'
+
+on: 
+  push: 
+    branches: [ main ]
+
+jobs:
+  test-scripts:
+    runs-on: ubuntu-latest
+    
+    permissions:
+        contents: read
+        packages: read
+        statuses: write
+        
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+          
+      - name: Lint shell scripts
+        uses: super-linter/super-linter@v6.1.1
+        env: 
+          VALIDATE_SHELL_SHFMT: true 
+          BASH_SEVERITY: info
+        
+    
+      
