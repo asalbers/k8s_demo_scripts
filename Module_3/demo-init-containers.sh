@@ -8,11 +8,14 @@ CleanUp(){
 cd InitContainers
 
 
-read -pr "Navigate to the Deployments Page"
+read -p "Navigate to the Deployments Page"
+echo
 
-read -pr "Next Step - Creates a multi-container workload with Init Containers"
+read -p "Next Step - Creates a multi-container workload with Init Containers"
 kubectl apply -f init-dep.yaml
+echo
 
-read -pr "Click on any of the new pods to view Pod Details.  Watch the containers tabs"
+read -p "Click on any of the new pods to view Pod Details.  Watch the containers tabs"
+echo
 
 CleanUp

@@ -8,22 +8,28 @@ CleanUp(){
 cd AffinityVolume
 
 
-read -pr "Navigate to the Settings page.  Turn on Mini Pods" </dev/tty
-read -pr "Navigate to the Nodes page" </dev/tty
+read -p "Navigate to the Settings page.  Turn on Mini Pods" </dev/tty
+read -p "Navigate to the Nodes page" </dev/tty
+echo
 
-read -pr "Next Step - Creates PVC and Deployment with 6 replicas.  All will be on same node" </dev/tty
+read -p "Next Step - Creates PVC and Deployment with 6 replicas.  All will be on same node" </dev/tty
 kubectl apply -f pvc.yaml
 kubectl apply -f pvc-dep-replicas-6.yaml
+echo
 
-read -pr "Next Step - Increases workload instances.  All still on same node" </dev/tty
+read -p "Next Step - Increases workload instances.  All still on same node" </dev/tty
 kubectl scale --replicas=12 deploy/pvc-pod-dep
+echo
 
-read -pr "Next Step - Increases workload instances past limit.  Some will remain Pending even if there's room on other nodes" </dev/tty
+read -p "Next Step - Increases workload instances past limit.  Some will remain Pending even if there's room on other nodes" </dev/tty
 kubectl scale --replicas=24 deploy/pvc-pod-dep
+echo
 
-read -pr "Next Step - Change the Affinity rule to Preferred.  Pending pods will be scheduled on other nodes" </dev/tty
-kubectl apply -f pvc-dep-replicas-24-preferred.yaml
+read -p "Next Step - Change the Affinity rule to Peferred.  Pending pods will be scheduled on other nodes" </dev/tty
+kubectl apply -f pvc-dep-replicas-24-peferred.yaml
+echo
 
-read -pr "Notice that new pods can't start because the volume has already been attached to the other node" </dev/tty
+read -p "Notice that new pods can't start because the volume has already been attached to the other node" </dev/tty
+echo
 
 CleanUp

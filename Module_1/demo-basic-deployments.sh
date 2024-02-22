@@ -2,7 +2,7 @@
 
 CleanUp() {
     kubectl delete deploy workload-1-dep -n default
-    exit 0
+    exit 
 }
 
 # Change to the demo folder

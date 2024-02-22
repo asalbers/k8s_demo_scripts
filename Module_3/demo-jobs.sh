@@ -9,14 +9,17 @@ CleanUp(){
 cd Jobs
 
 
-read -pr "Navigate to the Jobs page"
+read -p "Navigate to the Jobs page"
+echo
 
-read -pr "Next Step - Creates a Job"
+read -p "Next Step - Creates a Job"
 kubectl apply -f countdown-job.yaml
+echo
 
-read -pr "Next Step - Create a Cron Job"
+read -p "Next Step - Create a Cron Job"
 kubectl apply -f sample-cron-job.yaml
+echo
 
-read -pr "Click on the Cron Jobs tab.  Wait for new jobs to show up.  Will maintain history of past 3 jobs"
+read -p "Click on the Cron Jobs tab.  Wait for new jobs to show up.  Will maintain history of past 3 jobs"
 
 CleanUp

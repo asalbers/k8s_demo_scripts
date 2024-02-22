@@ -10,15 +10,18 @@ CleanUp(){
 cd KEDA-Cron
 
 
-read -pr "Navigate to the Settings page"
-read -pr "Turn ON Micro Pods"
-read -pr "Navigate to the Deployments page"
+read -p "Navigate to the Settings page"
+read -p "Turn ON Micro Pods"
+read -p "Navigate to the Deployments page"
+echo 
 
-read -pr "Next Step - Creates initial workload and Cron KEDA scaler"
+read -p "Next Step - Creates initial workload and Cron KEDA scaler"
 kubectl apply -f workload-dep.yaml
 kubectl apply -f keda-cron.yaml
+echo
 
-read -pr "Observe pod replicas increase every 2nd minute and decrease every 4th minutes"
-read -pr "Discuss how this can be used to scale a workload in preparation for a known event"
+read -p "Observe pod replicas increase every 2nd minute and decrease every 4th minutes"
+read -p "Discuss how this can be used to scale a workload in preparation for a known event"
+echo
 
 CleanUp

@@ -13,29 +13,46 @@ CleanUp(){
 # Change to the demo folder
 cd volumes
 
+read -p "Navigate to the Namespace"
+echo
 
-read -pr "Navigate to the Namespace"
-
-read -pr "Next Step - Create initial workload with ephemeral volumes"
+read -p "Next Step - Create initial workload with ephemeral volumes"
 kubectl apply -f configmap-file.yaml 
 kubectl apply -f secret-simple.yaml
 kubectl apply -f workload-1-ephemeral.yaml
+echo
 
-# $AzureDiskName = read -pr "Enter the Disk Name of the Azure Disk (make sure the cluster identity has rights to disk)" 
-# $AzureDiskUri = read -pr "Enter the Resource ID of the Azure Disk" 
-# if (($AzureDiskName) -and ($AzureDiskUri)) {
-#     SendMessageToCI "Save the name of the Resource ID of an existing Azure Disk" "Save Azure Disk:" "Info"
-#     Copy-Item workload-2-disk.yaml temp-disk.yaml
-#     (Get-Content -path temp-disk.yaml -Raw) -replace 'AZURE_DISK_NAME', $AzureDiskName | Set-Content -Path temp-disk.yaml
-#     (Get-Content -path temp-disk.yaml -Raw) -replace 'AZURE_DISK_URI', $AzureDiskUri | Set-Content -Path temp-disk.yaml
-#     read -pr "Next Step - Create deployment with Azure Disk Volume"
-#     SendMessageToCI "kubectl apply -f workload-2-disk.yaml" "Kubectl command:" "Command"
-#     kubectl apply -f temp-disk.yaml 
-#     Remove-Item temp-disk.yaml
-# }
+read -p "Enter the Disk Name of the Azure Disk (make sure the cluster identity has rights to disk): " AzureDiskName
+echo $AzureDiskName
+echo
 
-read -pr "Next Step - Create deployment with Dynamic Azure File Volume"
+read -p "Enter the Resource ID of the Azure Disk: " AzureDiskUri
+echo $AzureDiskUri
+echo
+
+
+if  test -n $AzureDiskName &&  test -n $AzureDiskUri ; then
+echo 'creating temp yaml file and replacing values'
+echo
+
+cp workload-2-disk.yaml temp-disk.yaml
+sed -i -e s/AZURE_DISK_NAME/$AzureDiskName/g temp-disk.yaml
+sed -i -e s/AZURE_DISK_URI/$AzureDiskUri/g temp-disk.yaml
+read -p 'Replaced Azure disk and URI values'
+echo
+
+read -p "Next Step - Create deployment with Azure Disk Volume"
+kubectl apply -f temp-disk.yaml
+rm temp-disk.yaml
+
+else
+read -p 'Skipping static disk'
+echo
+fi
+
+read -p "Next Step - Create deployment with Dynamic Azure File Volume"
 kubectl apply -f pvc-dynamic-file.yaml
 kubectl apply -f workload-3-dynamic-file.yaml
+echo
 
 CleanUp

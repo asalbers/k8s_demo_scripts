@@ -8,34 +8,43 @@ CleanUp(){
 cd KEDA-RabbitMQ
 
 
-read -pr "Navigate to the Settings page"
-read -pr "Turn ON Micro Pods"
-read -pr "Navigate to the Deployments page"
+read -p "Navigate to the Settings page"
+read -p "Turn ON Micro Pods"
+read -p "Navigate to the Deployments page"
+echo
 
-read -pr "Next Step - Creates initial workloads"
+read -p "Next Step - Creates initial workloads"
 kubectl apply -f rabbit-cm.yaml
 kubectl apply -f rabbit-dep.yaml
 kubectl apply -f rabbit-svc.yaml
 kubectl apply -f queue-processor.yaml
+echo
 
-read -pr "Wait until Rabbit workload is ready"
+read -p "Wait until Rabbit workload is ready"
+echo
 
-read -pr "Load rabbit UI - In a background job"
-read -pr  " run in another window kubectl port-forward svc/rabbit-svc 15672 "
+read -p "Load rabbit UI - In a background job"
+read -p  " run in another window kubectl port-forward svc/rabbit-svc 15672 "
+echo
 
-read -pr "Open a browser window and navigate to http://localhost:15672"
-read -pr "Observer SampleQueue on the Queues page"
+read -p "Open a browser window and navigate to http://localhost:15672"
+read -p "Observer SampleQueue on the Queues page"
+echo
 
-read -pr "Next Step - Loads Messages into queue"
+read -p "Next Step - Loads Messages into queue"
 kubectl apply -f queue-loader-job.yaml
+echo
 
-read -pr "Observer about 500 message in SampleQueue on the Queues page"
-read -pr "Observer how slowly they're being processed"
+read -p "Observer about 500 message in SampleQueue on the Queues page"
+read -p "Observer how slowly they're being processed"
+echo
 
-read -pr "Next Step - Creates KEDA autoscaler"
+read -p "Next Step - Creates KEDA autoscaler"
 kubectl apply -f keda-rabbit.yaml
+echo
 
-read -pr "Observer increase in pod replicas.  Show HPA Info (i) panel.  Observe Scale Down Stabilization Window"
-read -pr "Observer pod replica decrease as queued messages decrease"
+read -p "Observer increase in pod replicas.  Show HPA Info (i) panel.  Observe Scale Down Stabilization Window"
+read -p "Observer pod replica decrease as queued messages decrease"
+echo
 
 CleanUp
