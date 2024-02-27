@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp() {
+    read -p "Clean Up"
     kubectl delete statefulset/pvc-pod-ss
     kubectl delete service/pvc-pod-svc
 }

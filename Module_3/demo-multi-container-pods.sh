@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp(){
+    read -p "Clean up"
     kubectl delete deploy multi-dep
 }
 

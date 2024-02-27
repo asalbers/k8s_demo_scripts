@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp(){
+    read -p "Clean Up"
     kubectl delete deploy pvc-pod-dep
 }
 

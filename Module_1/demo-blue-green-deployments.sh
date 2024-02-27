@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp() {
-    
+    read -p "Clean up workloads"
     # SendMessageToCI "kubectl delete deploy blue-dep" "Kubectl command:" "Command"
     kubectl delete deploy blue-dep
     # SendMessageToCI "kubectl delete deploy green-dep" "Kubectl command:" "Command"

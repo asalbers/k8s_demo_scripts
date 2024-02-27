@@ -2,6 +2,7 @@
 
 
 CleanUp(){
+    read -p "Clean up"
     kubectl delete deploy workload-1-ephemeral workload-3-dynamic-file
     kubectl delete deploy workload-2-disk
     kubectl delete cm configmap-file
@@ -11,7 +12,7 @@ CleanUp(){
 
 
 # Change to the demo folder
-cd volumes
+cd Volumes
 
 read -p "Navigate to the Namespace"
 echo

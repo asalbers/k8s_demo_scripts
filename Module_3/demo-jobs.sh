@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp(){
+    read -p "Clean up"
     kubectl delete job countdown-job
     kubectl delete cronjob sample-cron-job
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 CleanUp(){
-
+    read -p "Clean up"
     kubectl delete deploy pvc-volume-dep
     kubectl delete pvc pvc-volume-disk
 

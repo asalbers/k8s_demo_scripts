@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp () {
+    read -p "Clean up"
     kubectl delete svc complex-web-svc
     kubectl delete deploy complex-web-dep
     kubectl delete deploy complex-web-load

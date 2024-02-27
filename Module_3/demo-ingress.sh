@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp(){
+    read -p "Clean up"
     kubectl delete ns development
 
     kubectl delete ns staging

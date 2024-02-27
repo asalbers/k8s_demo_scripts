@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 CleanUp(){
+    read -p "Clean up"
     kubectl delete deploy -l app=demo
     kubectl delete limitrange -l app=demo
     kubectl delete resourcequota -l app=demo
