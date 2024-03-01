@@ -7,11 +7,6 @@ on:
 jobs:
   test-scripts:
     runs-on: ubuntu-latest
-    
-    permissions:
-        contents: read
-        packages: read
-        statuses: write
         
     steps: 
       - name: Checkout code
