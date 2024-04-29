@@ -7,21 +7,21 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2023-02-14T21:59:15Z"
+  creationTimestamp: "2024-02-22T17:56:00Z"
   generation: 1
   labels:
-    app: mydep2
-  name: mydep2
+    app: mydep
+  name: mydep
   namespace: default
-  resourceVersion: "70883"
-  uid: fab356ab-c0c6-4c69-a2a2-d8d38dd78352
+  resourceVersion: "58050866"
+  uid: 69041d36-fd81-4db1-b187-1f7bff92d3b9
 spec:
   progressDeadlineSeconds: 600
-  replicas: 1
+  replicas: 6
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: mydep2
+      app: mydep
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -31,7 +31,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: mydep2
+        app: mydep
     spec:
       containers:
       - image: nginx
@@ -48,15 +48,15 @@ spec:
 status:
   availableReplicas: 2
   conditions:
-  - lastTransitionTime: "2023-02-14T21:59:16Z"
-    lastUpdateTime: "2023-02-14T21:59:16Z"
+  - lastTransitionTime: "2024-02-22T17:56:07Z"
+    lastUpdateTime: "2024-02-22T17:56:07Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2023-02-14T21:59:15Z"
-    lastUpdateTime: "2023-02-14T21:59:16Z"
-    message: ReplicaSet "mydep2-85ff84d5c8" has successfully progressed.
+  - lastTransitionTime: "2024-02-22T17:56:00Z"
+    lastUpdateTime: "2024-02-22T17:56:07Z"
+    message: ReplicaSet "mydep-6cbff967c8" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing

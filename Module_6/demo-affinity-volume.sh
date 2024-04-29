@@ -27,7 +27,7 @@ kubectl scale --replicas=24 deploy/pvc-pod-dep
 echo
 
 read -p "Next Step - Change the Affinity rule to Peferred.  Pending pods will be scheduled on other nodes" </dev/tty
-kubectl apply -f pvc-dep-replicas-24-peferred.yaml
+kubectl apply -f pvc-dep-replicas-24-preferred.yaml
 echo
 
 read -p "Notice that new pods can't start because the volume has already been attached to the other node" </dev/tty
